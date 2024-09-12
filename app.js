@@ -54,11 +54,9 @@ app.get('/characters/:name', async (req, res) => {
         const characters = await getAllCharacters();
         const filterCharacters = characters.filter(char => char.name.toLowerCase().includes(characterName.toLowerCase()));
         
-        if (matchedCharacters.length > 0) {
-            res.json(filterCharacters);
-        } else {
-            res.status(404).json({ error: 'Personaje no encontrado' });
-        }
+       
+        res.json(filterCharacters);
+       
     } catch (error) {
         res.status(404).json({ error: error.message });
     }
